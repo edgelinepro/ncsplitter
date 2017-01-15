@@ -103,6 +103,9 @@ namespace ncsplitter
             // Clear log
             textLog.Clear();
 
+            // Lock button
+            btnSplit.Enabled = false;
+
             // Init. Collections
             col_nc_names = new List<string>();
             col_nc_content = new List<string>();
@@ -168,6 +171,8 @@ namespace ncsplitter
                 AddLog("ERR: The file is empty or corrupted!");
                 return;
             }
+
+            btnSplit.Enabled = true;
         }
 
         private string GetName(string nc_line)

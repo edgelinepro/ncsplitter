@@ -161,14 +161,14 @@ namespace ncsplitter
                                     StringReader srt = new StringReader(nc_code);
                                     string srt_line = String.Empty;
 
-                                    // Write start marker [20.10.16]
+                                    // Write start marker
                                     sw.WriteLine("%");
 
                                     while ((srt_line = srt.ReadLine()) != null)
                                         if (srt_line != "%")
                                             sw.WriteLine(srt_line);
 
-                                    // Write end marker [20.10.16]
+                                    // Write end marker
                                     sw.WriteLine("%");
                                 }
 
