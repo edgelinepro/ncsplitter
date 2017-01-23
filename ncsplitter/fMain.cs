@@ -32,7 +32,7 @@ namespace ncsplitter
             dlgOpen.Multiselect = false;
 
             file_types = "HAAS PGM files (*.pgm)|*.pgm|";
-            file_types += "Doosan Backup files (*.all)|*.all|";
+            file_types += "Fanuc Backup files (*.all)|*.all|";
             file_types += "Generic NC files (*.nc)|*.nc|";
             file_types += "All files (*.*)|*.*";
             dlgOpen.Filter = file_types;
@@ -228,5 +228,46 @@ namespace ncsplitter
             textLog.SelectionStart = textLog.TextLength;
             textLog.ScrollToCaret();
         }
+
+        private void textPathSrc_DragEnter(object sender, DragEventArgs e)
+        {
+            DragDropEffects effects = DragDropEffects.None;
+
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] files_drag = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+                effects = File.Exists(files_drag[0]) ? DragDropEffects.Link : DragDropEffects.None;
+            }
+
+            e.Effect = effects;
+        }
+
+        private void textPathSrc_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files_drag = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            textPathSrc.Text = files_drag[0];
+        }
+
+        private void textPathDst_DragEnter(object sender, DragEventArgs e)
+        {
+            DragDropEffects effects = DragDropEffects.None;
+
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] file_path = (string[])e.Data.GetData(DataFormats.FileDrop);
+                effects = Directory.Exists(file_path[0]) ?
+                    DragDropEffects.Link : DragDropEffects.None;
+            }
+
+            e.Effect = effects;
+        }
+
+        private void textPathDst_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files_drag = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            textPathDst.Text = files_drag[0];
+        }
+
+        
     }
 }

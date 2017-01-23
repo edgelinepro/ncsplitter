@@ -52,6 +52,7 @@
             // 
             // textPathSrc
             // 
+            this.textPathSrc.AllowDrop = true;
             this.textPathSrc.BackColor = System.Drawing.SystemColors.Window;
             this.textPathSrc.Location = new System.Drawing.Point(116, 12);
             this.textPathSrc.Name = "textPathSrc";
@@ -59,6 +60,8 @@
             this.textPathSrc.Size = new System.Drawing.Size(325, 21);
             this.textPathSrc.TabIndex = 1;
             this.textPathSrc.Click += new System.EventHandler(this.textPathSrc_Click);
+            this.textPathSrc.DragDrop += new System.Windows.Forms.DragEventHandler(this.textPathSrc_DragDrop);
+            this.textPathSrc.DragEnter += new System.Windows.Forms.DragEventHandler(this.textPathSrc_DragEnter);
             // 
             // labelDst
             // 
@@ -71,6 +74,7 @@
             // 
             // textPathDst
             // 
+            this.textPathDst.AllowDrop = true;
             this.textPathDst.BackColor = System.Drawing.SystemColors.Window;
             this.textPathDst.Location = new System.Drawing.Point(116, 39);
             this.textPathDst.Name = "textPathDst";
@@ -78,6 +82,8 @@
             this.textPathDst.Size = new System.Drawing.Size(325, 21);
             this.textPathDst.TabIndex = 3;
             this.textPathDst.Click += new System.EventHandler(this.textPathDst_Click);
+            this.textPathDst.DragDrop += new System.Windows.Forms.DragEventHandler(this.textPathDst_DragDrop);
+            this.textPathDst.DragEnter += new System.Windows.Forms.DragEventHandler(this.textPathDst_DragEnter);
             // 
             // btnSelectPathSrc
             // 
